@@ -48,9 +48,6 @@ def process_english_db(filename = "bd-inglesa.xlsx"):
     sheet = pe.get_sheet(file_name=filename, sheet_name="Proximates")
     row_names = sheet.row[0]
 
-
-
-
     # Firstly, we need a list with all the name fields we are going to use in order to
     # add the database information to "correspondences_values"
 
@@ -90,11 +87,11 @@ def process_italian_db(filename="bd-italiana.xlsx"):
     correspondences_values = ["food-code","food-name-ita", "food-name-eng","scientific-name","food-category",
     "edible-part","energy-kj","energy-fibre-kj","energy-kcal","energy-fibre-kcal", "total-protein-g",
     "animal-protein-g","vegetable-proteing-g","total-fat-g",
-    "animal-fat-g","vegetable-fat-g","cholesterol-g","available-carbohydrates-g", "starch-g",
-    "soluble--carbohydrates-g", "dietary-total-fibre-g", "alcohol-g","water-g","iron-mg","calcium-mg","sodium-mg","potassium-,mg",
+    "animal-fat-g","vegetable-fat-g","cholesterol-mg","available-carbohydrates-g", "starch-g",
+    "soluble-carbohydrates-g", "dietary-total-fibre-g", "alcohol-g","water-g","iron-mg","calcium-mg","sodium-mg","potassium-,mg",
     "phosphorus-mg",
     "zinc-mg", "magnesium-mg","cupper-mg","selenium-ug", "chloride-mg","iodine-ug","manganese-mg","suphur-mg",
-    "vitamin-b1-thiamin-mg", "vitamin-b2-riboflavin-mg", "vitamin-c","niacin-mg","vitamin-b6","total-folate-ug",
+    "vitamin-b1-thiamin-mg", "vitamin-b2-riboflavin-mg", "vitamin-c","niacin-mg","vitamin-b6-mg","total-folate-ug",
     "pantotenic-acid-mg", "biotin-ug", "vitamin-b12-ug","retinol-equivalent-ug", "retinol-ug", "b-carotene-eq-ug",
     "vitamin-e-mg", "vitamin-d-ug", "vitamin-k-ug", "saturated-fatty-acids-g","butyric-caproic-caprylic-capric-acid-g",
     "lauric-acid-g", "myristic-acid-g", "palmitic-acid-g", "stearic-acid-g","arachidic-acid-g", "behenic-acid",
@@ -110,10 +107,76 @@ def process_italian_db(filename="bd-italiana.xlsx"):
 
     pass
 
+
+
+
+def process_german_db(filename = "bd-alemana.xlsx"):
+
+    ## Read the sheet
+    sheet = pe.get_sheet(file_name=filename)
+    row_names = sheet.row[2]
+
+    # Firstly, we need a list with all the name fields we are going to use in order to
+    # add the database information to "correspondences_values"
+
+    # Vitamine - Vitamins: values per 100g -> has  always"werge pro 100g"
+    # Kalorien - Calories: values per 100g -> has  always"werge pro 100g"
+    # Mineralstoffe - Minerals: values per 100g -> has  always"werge pro 100g"
+    # Spurenelemente - Trace elements: -> has  always"werge pro 100g"
+    # Kohlenhydrate - Carbohydrates: -> has  always"werge pro 100g"
+    # Ballaststoffe - Dietary Fibres: -> has  always"werge pro 100g"
+    # Aminosäuren - Amino acids: values per 100g-> has  always"werge pro 100g"
+    # Fettsäuren - Fatty acids: values per 100g-> has  always"werge pro 100g"
+
+
+    correspondences_values = ["food-name-ger", "food-name", "food-name-esp", "nutritional-values",
+    "energy-kcal", "energy-kj", "fat-mg","carbohydrates-mg","protein-mg","salt-mg","dietary-fibre-mg",
+    "minerals-mg","bread-units-BE","vitamins-per-100g", "vitamin-a-retinol-mg", "vitamin-a-beta-carotin-ug",
+    "vitamin-e-alpha-tocopherol-equivalent-ug","vitamin-e-alpha-tocopherol-ug", "vitamin-b1-thiamin-ug",
+    "vitamin-b2-riboflavin-ug","vitamin-b3-niacin.nicotinic-acid-ug", "vitamin-b3-equivalent-ug",
+    "vitamin-b5-pantothenic-acid-ug","vitamin-b6-pyidoxine-ug","vitamin-b7-biotin-ug","vitamin-b9-total-folic-acid-ug",
+    "vitamin-c-ascorbic-acid-ug","calories-per-100g", "energy-kcal", "energy-kj", "energy-including-fibre-kcal",
+    "energy-including-fibre-kj","minerals-per-100g", "sodium-mg", "potassium-mg","calcium-mg",
+    "magnesium-mg","phosphorus-mg","sulphur-mg","chloride-mg","trace-elements-per-100g", "iron-ug", "zink-ug",
+    "copper-ug","manganese-ug","fluoride-ug","ioide-ug","carbohydrates-per-100g","glucose-mg",
+    "fructose-mg", "monosaccharides-mg","sucrose-mg", "disaccharides-mg","sugar-mg","dietary-fibres-per-100g",
+    "poly-pentoses-mg","poly-hexoses-mg","poly-uronic-mg","acid-cellulose-mg","lignin-mg",
+    "water-soluble-dietary-fibres-mg", "water-insoluble-dietary-fibres-mg","amino-acids-per-100g",
+    "isoleucine-mg","leucine-mg","lysine-mg", "methionine-mg","cysteine-mg", "phenylalanine-mg","tyrosine-mg",
+    "threonine-mg","tryptophan-mg","valine-mg","arginine-mg","histidine-mg","essential-amino-acids-mg",
+    "alanine-mg","aspartic-acid-mg","glutamic-acid-mg","glycine-mg","proline-mg","serine-mg",
+    "nonessential-amino-acids-mg", "uric-acid-mg","purine-mg","fatty-acids-per-100g","dodecanoic-acid-lauric-acid-mg",
+    "tetradecanoic-acid-myristic-acid-mg","hexadecanoic-acid-palmitic-acid-mg","octadecanoic-acid-stearic-acid-mg",
+    "saturated-fatty-acids-mg","hexadecenoic-acid-palmitoleic-acid-mg","octadecenoic-acid-oleic-acid-mg",
+    "monounsaturated-fatty-acids-mg","octadecadienoic-acid-linoleic-acid-mg","octadecatrienoic-acid-linolenic-acid-mg",
+    "polyunsaturated-fatty-acids-mg","long-chain-fatty-acids-mg","omega-3-fatty-acids-mg",
+    "omega-6-fatty-acids-mg","glycering-lipoids-mg","starch-mg","polysaccharides-mg","cobalamin-ug",
+    "mannitol-mg","sorbitol-mg","sugar-alcohols-mg","galactose-mg","maltose-mg","oligosaccharides-absorbable-mg",
+    "oligosaccharides-non-absorbable-mg", "heptadecanoic-acid-mg","eicosanoic-acid-araquinic-acid-mg",
+    "vitamin-a-retinol-mg","vitamin-d-calciferols-mg","hexanoic-acid-caproic-acid-mg","decanoic-acid-capric-acid-mg",
+    "pentadecanoic-acid-mg","decosanoic-acid-behenic-acid-mg","tetracosanoic-acid-lignoceric-acid-mg",
+    "tetradecenoic-acid-mg","eicosene-acid-mg","decosene-acid-erucaic-acid-mg","octradecatetraenoic-acid-stearidonic-acid-mg",
+    "eicosadienoic-acid-mg", "eicosatrienoic-acid-mg", "eicosatetraenoic-acid-arachidonic-acid-mg",
+    "eicosapentaenoic-aic-mg","docosatetraenoic-acid-mg","docosapentaenoic-acid-mg","docosahexaenoic-acid-mg",
+    "short-chain-fatty-acids-mg","medium-chain-fatty-acids-mg","cholesterol-mg",
+    "lactose-mg","butanoic-acid-butyric-acid-mg","octanoic-acid-caprylic-acid-mg","pentadecenoic-acid-mg",
+    "heptadecenoic-acid-mg","glycogen-mg","Tetracosenoic-acid-nervonic-acid-mg","nonadecatrienoic-acid-mg",
+    "xylitol-mg", "hexadecadienoic-acid-mg", "Docosadienoic-acid-mg","docosatrienoic-acid-mg","hexadecatetraenoic-acid-mg"]
+
+    for i,name in enumerate(row_names):
+        fields_correspondences[name] = correspondences_values[i]
+        
+    pass
+
+    # for i in fields_correspondences.keys():
+    #     print(i)
+
+
 def get_correspondences():
     process_greek_db()
     process_english_db()
     process_italian_db()
+    process_german_db()
     # call the other databases to complete correspondences.....
     return fields_correspondences
 
