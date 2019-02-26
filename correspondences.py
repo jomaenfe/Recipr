@@ -11,7 +11,7 @@ fields_correspondences = {}
 #    "saturated-fatty-acids","monounsaturated-fatty-acids","polyunsaturated-fatty-acids"]
 
 
-def process_greek_db(filename = "hhf-greece.gr.xlsx"):
+def correspondences_greek_db(filename = "hhf-greece.gr.xlsx"):
 
     ## Read the sheet
     sheet = pe.get_sheet(file_name=filename)
@@ -42,7 +42,7 @@ def process_greek_db(filename = "hhf-greece.gr.xlsx"):
     pass
 
 
-def process_english_db(filename = "bd-inglesa.xlsx"):
+def correspondences_english_db(filename = "bd-inglesa.xlsx"):
 
     ## Read the sheet
     sheet = pe.get_sheet(file_name=filename, sheet_name="Proximates")
@@ -75,7 +75,7 @@ def process_english_db(filename = "bd-inglesa.xlsx"):
 
 
 
-def process_italian_db(filename="bd-italiana.xlsx"):
+def correspondences_italian_db(filename="bd-italiana.xlsx"):
 
     ## Read the sheet
     sheet = pe.get_sheet(file_name=filename)
@@ -110,7 +110,7 @@ def process_italian_db(filename="bd-italiana.xlsx"):
 
 
 
-def process_german_db(filename = "bd-alemana.xlsx"):
+def correspondences_german_db(filename = "bd-alemana.xlsx"):
 
     ## Read the sheet
     sheet = pe.get_sheet(file_name=filename)
@@ -138,7 +138,7 @@ def process_german_db(filename = "bd-alemana.xlsx"):
     "vitamin-c-ascorbic-acid-ug","calories-per-100g", "energy-kcal", "energy-kj", "energy-including-fibre-kcal",
     "energy-including-fibre-kj","minerals-per-100g", "sodium-mg", "potassium-mg","calcium-mg",
     "magnesium-mg","phosphorus-mg","sulphur-mg","chloride-mg","trace-elements-per-100g", "iron-ug", "zink-ug",
-    "copper-ug","manganese-ug","fluoride-ug","ioide-ug","carbohydrates-per-100g","glucose-mg",
+    "copper-ug","manganese-ug","fluoride-ug","iodine-ug","carbohydrates-per-100g","glucose-mg",
     "fructose-mg", "monosaccharides-mg","sucrose-mg", "disaccharides-mg","sugar-mg","dietary-fibres-per-100g",
     "poly-pentoses-mg","poly-hexoses-mg","poly-uronic-mg","acid-cellulose-mg","lignin-mg",
     "water-soluble-dietary-fibres-mg", "water-insoluble-dietary-fibres-mg","amino-acids-per-100g",
@@ -165,7 +165,7 @@ def process_german_db(filename = "bd-alemana.xlsx"):
 
     for i,name in enumerate(row_names):
         fields_correspondences[name] = correspondences_values[i]
-        
+
     pass
 
     # for i in fields_correspondences.keys():
@@ -173,10 +173,10 @@ def process_german_db(filename = "bd-alemana.xlsx"):
 
 
 def get_correspondences():
-    process_greek_db()
-    process_english_db()
-    process_italian_db()
-    process_german_db()
+    correspondences_greek_db()
+    correspondences_english_db()
+    correspondences_italian_db()
+    correspondences_german_db()
     # call the other databases to complete correspondences.....
     return fields_correspondences
 
@@ -185,3 +185,13 @@ def get_correspondences():
 d = get_correspondences()
 # for i in d.keys():
 #     print(i+","+d[i])
+#
+
+
+all_values = open("values.md",'w')
+all_values.write("# List of name fields\n")
+for key in sorted(d.keys()):
+    # print( d[key])
+    all_values.write("- "+d[key]+"\n")
+
+all_values.close()
