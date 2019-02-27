@@ -3,7 +3,7 @@ import pyexcel as pe
 from correspondences import get_correspondences
 
 # ------------------------------------------------------------------------------
-def process_greek_db(fields_correspondences,filename = "hhf-greece.gr.xlsx"):
+def process_greek_db(fields_correspondences,filename = "data/hhf-greece.gr.xlsx"):
 
     ## Read the sheet
     sheet = pe.get_sheet(file_name=filename)
@@ -27,7 +27,7 @@ def process_greek_db(fields_correspondences,filename = "hhf-greece.gr.xlsx"):
 
     # Save all the changes
     sheet.row[0] = row_names
-    sheet.save_as("processed-greek-db.xlsx")
+    sheet.save_as("data/processed-greek-db.xlsx")
 
     pass
 

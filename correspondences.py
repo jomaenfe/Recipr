@@ -11,7 +11,7 @@ fields_correspondences = {}
 #    "saturated-fatty-acids","monounsaturated-fatty-acids","polyunsaturated-fatty-acids"]
 
 
-def correspondences_greek_db(filename = "hhf-greece.gr.xlsx"):
+def correspondences_greek_db(filename = "data/hhf-greece.gr.xlsx"):
 
     ## Read the sheet
     sheet = pe.get_sheet(file_name=filename)
@@ -42,7 +42,7 @@ def correspondences_greek_db(filename = "hhf-greece.gr.xlsx"):
     pass
 
 
-def correspondences_english_db(filename = "bd-inglesa.xlsx"):
+def correspondences_english_db(filename = "data/bd-inglesa.xlsx"):
 
     ## Read the sheet
     sheet = pe.get_sheet(file_name=filename, sheet_name="Proximates")
@@ -75,7 +75,7 @@ def correspondences_english_db(filename = "bd-inglesa.xlsx"):
 
 
 
-def correspondences_italian_db(filename="bd-italiana.xlsx"):
+def correspondences_italian_db(filename="data/bd-italiana.xlsx"):
 
     ## Read the sheet
     sheet = pe.get_sheet(file_name=filename)
@@ -110,7 +110,7 @@ def correspondences_italian_db(filename="bd-italiana.xlsx"):
 
 
 
-def correspondences_german_db(filename = "bd-alemana.xlsx"):
+def correspondences_german_db(filename = "data/bd-alemana.xlsx"):
 
     ## Read the sheet
     sheet = pe.get_sheet(file_name=filename)
@@ -172,11 +172,13 @@ def correspondences_german_db(filename = "bd-alemana.xlsx"):
     #     print(i)
 
 
-def get_correspondences():
-    correspondences_greek_db()
-    correspondences_english_db()
-    correspondences_italian_db()
-    correspondences_german_db()
+def get_correspondences(greek_db = "data/hhf-greece.gr.xlsx", english_db = "data/bd-inglesa.xlsx",
+italian_db = "data/bd-italiana.xlsx" ,german_db = "data/bd-alemana.xlsx"):
+
+    correspondences_greek_db(greek_db)
+    correspondences_english_db(english_db)
+    correspondences_italian_db(italian_db)
+    correspondences_german_db(german_db)
     # call the other databases to complete correspondences.....
     return fields_correspondences
 
@@ -185,7 +187,7 @@ def get_correspondences():
 d = get_correspondences()
 # for i in d.keys():
 #     print(i+","+d[i])
-#
+
 
 
 all_values = open("values.md",'w')
