@@ -1,5 +1,7 @@
 import unittest
 import pyexcel as pe
+import os.path, sys
+sys.path.append(os.path.join(os.path.dirname(os.path.realpath(__file__)), os.pardir))
 
 from correspondences import get_correspondences
 from english_database import process_english_db
@@ -26,7 +28,7 @@ class correspondencesTestCase(unittest.TestCase):
 
 
         process_english_db(self.fields_correspondences)
-        english_db_to_test = pe.get_sheet(file_name="processed-english-db.xlsx")
+        english_db_to_test = pe.get_sheet(file_name="data/processed-english-db.xlsx")
         new_row_names = english_db_to_test.row[0]
 
 
@@ -38,7 +40,7 @@ class correspondencesTestCase(unittest.TestCase):
     def test_german_db(self):
 
         process_german_db(self.fields_correspondences)
-        german_db_to_test = pe.get_sheet(file_name="processed-german-db.xlsx")
+        german_db_to_test = pe.get_sheet(file_name="data/processed-german-db.xlsx")
         new_row_names = german_db_to_test.row[2]
 
         # Check first and last name fields
@@ -51,7 +53,7 @@ class correspondencesTestCase(unittest.TestCase):
         # old_row_names = greek_example_sheet.row[1]
 
         process_greek_db(self.fields_correspondences)
-        greek_db_to_test = pe.get_sheet(file_name="processed-greek-db.xlsx")
+        greek_db_to_test = pe.get_sheet(file_name="data/processed-greek-db.xlsx")
         new_row_names = greek_db_to_test.row[0]
 
         # Check first and last name fields
@@ -64,7 +66,7 @@ class correspondencesTestCase(unittest.TestCase):
     def test_italian_db(self):
 
         process_italian_db(self.fields_correspondences)
-        italian_db_to_test = pe.get_sheet(file_name="processed-italian-db.xlsx")
+        italian_db_to_test = pe.get_sheet(file_name="data/processed-italian-db.xlsx")
         new_row_names = italian_db_to_test.row[1]
 
         # Check first and last name fields
