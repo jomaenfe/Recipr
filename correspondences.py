@@ -168,17 +168,44 @@ def correspondences_german_db(filename = "data/bd-alemana.xlsx"):
 
     pass
 
-    # for i in fields_correspondences.keys():
-    #     print(i)
+
+def correspondences_spanish_db(filename="data/espanola.xlsx"):
+
+  ## Read the sheet
+  sheet = pe.get_sheet(file_name=filename)
+  row_names = sheet.row[0]
+
+  correspondences_values = ["id_alimento", "id_alimento_completo", "id_usuario",
+  "nombre", "nombre_alias", "nombre_ing", "kcal_100g",	"id_grupo",	"grupo",
+  "id_supergrupos", "proteinas_porc", "hidratos_porc",	"grasa_porc",	"subgrupo_obso",
+  "subgrupo", "pc_porcentaje", "agua_g", "cal_kcal", "prot_g",	"hc_g",	"grasa_g",
+  "satur_g	","mono_g", "poli_g", "col_mg", "fibra_g","	sodio_mg",	"potasio_mg",	"magnesio_mg",
+  "calcio_mg", "fosf_mg",	"hierro_mg", "cloro_mg", "cinc_mg", "cobre_mg",	"manganeso_mg",
+  "cromo_mg",	"cobalto_mg",	"molibde_mg",	"yodo_mg", "fluor_mg", "butirico_c4_0_mg",
+  "caproico_c6_0_mg", "caprilico_c8_0_mg", "caprico_c10_0_mg",	"laurico_c12_0_mg", "miristico_c14_0_mg",
+  "c15_0_mg", "c15_00", "palmitico_c16_0_mg",	"c17_0_mg", "c17_00", "estearico_c18_0_mg",	"araquidi_c20_0_mg",
+  "behenico_c22_0_mg",	"miristol_c14_1_mg",	"palmitole_c16_1_mg", "oleico_c18_1_mg", "eicoseno_c20_1_mg",
+  "c22_1_mg", "linoleico_c18_2_mg", "linoleni_c18_3_mg", "c18_4_mg", "ara_ico_c20_4_mg", "c20_5_mg",
+  "c22_5_mg", "c22_6_mg",	"otrosatur0_mg", "otroinsat0_mg",	"omega3_0_mg",	"etanol0_mg", "vit_a_ug", "carotenos_ug",
+  "tocoferol_mg", "vit_d_ug",	"vit_b1_mg",	"vit_b2_mg", "vit_b6_mg",	"niacina", "ac_panto_ug", "biotina_ug",
+  "folico_ug", "b12_ug", "vit_c_mg",	"purinas_mg", "vit_k_mg",	"vit_e_mg", "oxalico",	"accion",	"fecha_creado"]
+
+  for i,name in enumerate(row_names):
+      fields_correspondences[name] = correspondences_values[i]
+      
+
+  pass
+
 
 
 def get_correspondences(greek_db = "data/hhf-greece.gr.xlsx", english_db = "data/bd-inglesa.xlsx",
-italian_db = "data/bd-italiana.xlsx" ,german_db = "data/bd-alemana.xlsx"):
+italian_db = "data/bd-italiana.xlsx" ,german_db = "data/bd-alemana.xlsx", spanish_db = "data/espanola.xlsx"):
 
     correspondences_greek_db(greek_db)
     correspondences_english_db(english_db)
     correspondences_italian_db(italian_db)
     correspondences_german_db(german_db)
+    correspondences_spanish_db(spanish_db)
     # call the other databases to complete correspondences.....
     return fields_correspondences
 
