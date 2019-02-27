@@ -8,6 +8,7 @@ from english_database import process_english_db
 from german_database import process_german_db
 from italian_database import process_italian_db
 from greek_database import process_greek_db
+from spanish_database import process_spanish_db
 
 
 class correspondencesTestCase(unittest.TestCase):
@@ -75,10 +76,13 @@ class correspondencesTestCase(unittest.TestCase):
         pass
 
 
+    def test_spanish_db(self):
 
+        process_spanish_db(self.fields_correspondences)
+        spanish_db_to_test = pe.get_sheet(file_name="data/processed-spanish-db.xlsx")
+        new_row_names = spanish_db_to_test.row[0]
 
-# Testear que las columnas no estén vacías
-
-
-
-# Testear que solo sea una palabra
+        # Check first and last name fields
+        self.assertEqual(new_row_names[0], "id_alimento", "The content of the fields doesn't match")
+        self.assertEqual(new_row_names[-1], "fecha_creado", "The content of the fields doesn't match")
+        pass
