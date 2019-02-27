@@ -2,7 +2,7 @@ import pyexcel as pe
 
 from correspondences import get_correspondences
 
-def process_english_db(fields_correspondences,filename = "bd-inglesa.xlsx"):
+def process_english_db(fields_correspondences,filename = "data/bd-inglesa.xlsx"):
 
     ## Read the sheet (we need to specify the correct sheet of the book)
     sheet = pe.get_sheet(file_name=filename,sheet_name="Proximates")
@@ -16,7 +16,7 @@ def process_english_db(fields_correspondences,filename = "bd-inglesa.xlsx"):
 
     # Save all the changes
     sheet.row[0] = row_names
-    sheet.save_as("processed-english-db.xlsx")
+    sheet.save_as("data/processed-english-db.xlsx")
 
     pass
 

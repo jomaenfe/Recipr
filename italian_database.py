@@ -2,7 +2,7 @@ import pyexcel as pe
 
 from correspondences import get_correspondences
 
-def process_english_db(fields_correspondences,filename = "bd-italiana.xlsx"):
+def process_italian_db(fields_correspondences,filename = "data/bd-italiana.xlsx"):
 
     ## Read the sheet (we need to specify the correct sheet of the book)
     sheet = pe.get_sheet(file_name=filename)
@@ -16,11 +16,11 @@ def process_english_db(fields_correspondences,filename = "bd-italiana.xlsx"):
 
     # Save all the changes
     sheet.row[1] = row_names
-    sheet.save_as("processed-italian-db.xlsx")
+    sheet.save_as("data/processed-italian-db.xlsx")
 
     pass
 
 
 if __name__ == "__main__":
     fields_correspondences = get_correspondences()
-    process_english_db(fields_correspondences)
+    process_italian_db(fields_correspondences)
