@@ -1,39 +1,52 @@
-import pyexcel as pe
+#####################
+# greek_database.py #
+#####################
 
-from correspondences import get_correspondences
+from openpyxl import Workbook, load_workbook
 
 # ------------------------------------------------------------------------------
-def process_greek_db(fields_correspondences,filename = "data/hhf-greece.gr.xlsx"):
 
-    ## Read the sheet
-    sheet = pe.get_sheet(file_name=filename)
+def process_greek_db(filename_origin = "data/Greece/original-db-greece.xlsx",
+                     filename_dest = "data/Greece/processed-db-greece.xlsx"):
 
-    # In the case of the greek database, we take into consideration all the fields
-    # We discriminate row 0 (spanish name fields) and column 0 (spanish name of foods)
-    del sheet.column[0]
-    del sheet.row[0]
+    # Leemos el libro de excel
+    wb = load_workbook(filename_origin)
 
-    # We are going to adapt name fields in order to unify with the other databases
+    # Obtenemos la primera hoja del documento
+    sheet = wb.worksheets[0]
 
-    # Get field names
-    row_names = sheet.row[0]
-    # # Then we modify them
-    row_names[0]="Food name" # we modify it because it is ' '
+    # Obtenemos el número de columnas que hay en total
+    n_colum = sheet.max_column
 
-    n_fields = len(row_names)
+    # Insertamos una columa al final para añadir la region
+    sheet.insert_cols(n_colum+1)
+    cell_country = sheet.cell(row = 2, column = n_colum+1)
+    cell_country.value = "Country"
 
-    for i in range(n_fields):
-        row_names[i] = fields_correspondences[row_names[i]]
+    # Insertamos la fila que contendrá las unidades
+    sheet.insert_rows(3)
 
-    # Save all the changes
-    sheet.row[0] = row_names
-    sheet.save_as("data/processed-greek-db.xlsx")
+    correspondences_values = ["Food name Spanish", "Food name English",
+    "Energy (kcal)", "Protein", "Total lipids/fat", "Saturated fatty acids",
+    "Monounsaturated fatty acids",	"Polyunsaturated fatty acids", "Carbohydrates",
+    "Dietary fibre", "Water", "Sodium", "Potassium", "Calcium",	"Magnesium",
+    "Phosphorus", "Iron", "Zinc", "Copper"]
 
-    pass
+    units_values = [" ", " ", "kcal", "g", "g", "g", "g", "g", "g", "g", "g",
+     "mg", "mg", "mg", "mg", "mg", "mg", "mg", "mg", " "]
 
+    # La primera celda de la tabla es la (1,1), no la (0,0)
+    for i in range(1, n_colum+1):
+        cell_names = sheet.cell(row = 2, column = i)
+        cell_names.value = correspondences_values[i-1]
+
+        cell_units = sheet.cell(row = 3, column = i)
+        cell_units.value = units_values[i-1]
+
+    wb.save(filename_dest)
 
 # ------------------------------------------------------------------------------
 
 if __name__ == "__main__":
-    fields_correspondences = get_correspondences()
-    process_greek_db(fields_correspondences)
+
+    process_greek_db()
