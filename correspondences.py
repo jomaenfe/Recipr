@@ -11,35 +11,35 @@ fields_correspondences = {}
 #    "saturated-fatty-acids","monounsaturated-fatty-acids","polyunsaturated-fatty-acids"]
 
 
-def correspondences_greek_db(filename = "data/hhf-greece.gr.xlsx"):
-
-    ## Read the sheet
-    sheet = pe.get_sheet(file_name=filename)
-
-    correspondences_values = ["food-name","energy-kcal", "protein-g", "total-lipids-fats-g",
-    "saturated-fatty-acids-g", "monounsaturated-fatty-acids-g", "polyunsaturated-fatty-acids-g",
-    "carbohydrates-g", "dietary-fibre-fiber-g", "water-g", "sodium-mg",  "potassium-mg", "calcium-mg",
-     "magnesium-mg", "phosphorus-mg", "iron-mg", "zinc-mg","copper-mg"]
-    # create dictionary
-
-    # In the case of the greek database, we take into consideration all the fields
-    # We discriminate row 0 (spanish name fields) and column 0 (spanish name of foods)
-    del sheet.column[0]
-    del sheet.row[0]
-
-    # We are going to adapt name fields in order to unify with the other databases
-
-    # Get field names
-    row_names = sheet.row[0]
-    # # Then we modify them
-    row_names[0]="Food name" # we modify it because it is ' '
-
-
-    for i,name in enumerate(row_names):
-        fields_correspondences[name] = correspondences_values[i]
-
-
-    pass
+# def correspondences_greek_db(filename = "data/hhf-greece.gr.xlsx"):
+#
+#     ## Read the sheet
+#     sheet = pe.get_sheet(file_name=filename)
+#
+#     correspondences_values = ["food-name","energy-kcal", "protein-g", "total-lipids-fats-g",
+#     "saturated-fatty-acids-g", "monounsaturated-fatty-acids-g", "polyunsaturated-fatty-acids-g",
+#     "carbohydrates-g", "dietary-fibre-fiber-g", "water-g", "sodium-mg",  "potassium-mg", "calcium-mg",
+#      "magnesium-mg", "phosphorus-mg", "iron-mg", "zinc-mg","copper-mg"]
+#     # create dictionary
+#
+#     # In the case of the greek database, we take into consideration all the fields
+#     # We discriminate row 0 (spanish name fields) and column 0 (spanish name of foods)
+#     del sheet.column[0]
+#     del sheet.row[0]
+#
+#     # We are going to adapt name fields in order to unify with the other databases
+#
+#     # Get field names
+#     row_names = sheet.row[0]
+#     # # Then we modify them
+#     row_names[0]="Food name" # we modify it because it is ' '
+#
+#
+#     for i,name in enumerate(row_names):
+#         fields_correspondences[name] = correspondences_values[i]
+#
+#
+#     pass
 
 
 def correspondences_english_db(filename = "data/bd-inglesa.xlsx"):
@@ -192,7 +192,7 @@ def correspondences_spanish_db(filename="data/espanola.xlsx"):
 
   for i,name in enumerate(row_names):
       fields_correspondences[name] = correspondences_values[i]
-      
+
 
   pass
 
@@ -201,7 +201,7 @@ def correspondences_spanish_db(filename="data/espanola.xlsx"):
 def get_correspondences(greek_db = "data/hhf-greece.gr.xlsx", english_db = "data/bd-inglesa.xlsx",
 italian_db = "data/bd-italiana.xlsx" ,german_db = "data/bd-alemana.xlsx", spanish_db = "data/espanola.xlsx"):
 
-    correspondences_greek_db(greek_db)
+    #correspondences_greek_db(greek_db)
     correspondences_english_db(english_db)
     correspondences_italian_db(italian_db)
     correspondences_german_db(german_db)
@@ -211,16 +211,16 @@ italian_db = "data/bd-italiana.xlsx" ,german_db = "data/bd-alemana.xlsx", spanis
 
 
 
-d = get_correspondences()
-# for i in d.keys():
-#     print(i+","+d[i])
-
-
-
-all_values = open("values.md",'w')
-all_values.write("# List of name fields\n")
-for key in sorted(d.keys()):
-    # print( d[key])
-    all_values.write("- "+d[key]+"\n")
-
-all_values.close()
+# d = get_correspondences()
+# # for i in d.keys():
+# #     print(i+","+d[i])
+#
+#
+#
+# all_values = open("values.md",'w')
+# all_values.write("# List of name fields\n")
+# for key in sorted(d.keys()):
+#     # print( d[key])
+#     all_values.write("- "+d[key]+"\n")
+#
+# all_values.close()

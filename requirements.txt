@@ -2,3 +2,4 @@ pyexcel==0.5.12
 pyexcel-xls==0.5.8
 pyexcel-xlsx==0.5.7
 pandas==0.24.2
+openpyxl==2.6.1
