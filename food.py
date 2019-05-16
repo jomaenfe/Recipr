@@ -44,45 +44,6 @@ class Food:
         
 
         
-        # Method to check if the current food contains a specific nutrient
-        def HasNutrient(self,nutrient):
-
-            result = False
-            
-            # Check if the parameter is a instance of Nutrient class
-            if isinstance(nutrient,Nutrient):
-                # Traverse each nutrient in the current food
-                for ntr in self.nutrients_list:               
-                    # First, check the scientific_name property  
-                    if nutrient.scientific_name ==  ntr.scientific_name:
-                        # This condition satisfied is enough to assure equality
-                        result = True
-                        break
-                    # Traverse each parameter name
-                    for nutrient_name in nutrient.multi_names:   
-                        # Check if the current parameter name is in some nutrient of nutrients_list
-                        if nutrient_name.upper() in [x.upper() for x in ntr.multi_names]:
-                            result = True
-                        break
-                    break   
-                    
-            return result
-
-        # Get the total weight of a specific nutrient name
-        def GetNutrientQuantity(self,nutrient_name):
-
-            result = 0
-            if nutrient_name:
-                # Traverse nutrient list
-                for ntr in self.nutrients_list:
-                    # without distinction between uppercase and lowercase
-                    if (nutrient_name.upper() == scientific_name.upper()) or (nutrient_name.upper() in [x.upper() for x in ntr.multi_names]):
-                        result = ntr.value
-                        # the search ends
-                        break
-            
-            return result
-
         
 
         
