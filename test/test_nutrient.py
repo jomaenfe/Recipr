@@ -21,8 +21,7 @@ class nutrientTestCase(unittest.TestCase):
         nutrient = Nutrient("potassium",["potasio","pottasche"],"g",5,3.5,5.3,"mineral")
         self.assertEqual(nutrient.InControlRange(), True, "Incorrect values")
 
-
-    
-
-#test_nutrient = nutrientTestCase()
-#test_nutrient.test_InControlRange()
+   
+# Testing
+test_nutrient = nutrientTestCase()
+test_nutrient.test_InControlRange()
