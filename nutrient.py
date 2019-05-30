@@ -3,8 +3,6 @@
 
 import sys
 
-from foodlib import *
-
 
 # nutrient component
 class Nutrient:
@@ -18,6 +16,7 @@ class Nutrient:
                 "mineral": (0,0), "vitamin": (0,0), "water": (0,0)
 
     }
+    
 
     def __init__(self,scientific_param,names_param,unit_param,value_param,range_param1,range_param2,category_param):
         # Variables de instancia: son para datos únicos de cada instancia
