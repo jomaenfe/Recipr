@@ -7,6 +7,7 @@ python:
 install:
 - pip install coveralls
 - pip install -r requirements.txt
+- pip install setuptools
 script:
 - coverage run --source=src setup.py test
 after_success:
