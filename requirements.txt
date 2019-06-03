@@ -4,3 +4,4 @@ pyexcel-xlsx
 pandas
 openpyxl
 numpy
+setuptools
