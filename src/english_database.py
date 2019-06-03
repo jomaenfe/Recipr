@@ -1,6 +1,7 @@
 import pyexcel as pe
 
-from correspondences import get_correspondences
+
+from src import correspondences as correp
 
 def process_english_db(fields_correspondences,filename = "data/bd-inglesa.xlsx"):
 
@@ -22,5 +23,5 @@ def process_english_db(fields_correspondences,filename = "data/bd-inglesa.xlsx")
 
 
 if __name__ == "__main__":
-    fields_correspondences = get_correspondences()
+    fields_correspondences = correp.get_correspondences()
     process_english_db(fields_correspondences)

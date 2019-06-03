@@ -1,6 +1,8 @@
+# -*- coding: utf-8 -*-
 import pyexcel as pe
 
-from correspondences import get_correspondences
+
+from src import correspondences as correp
 
 # ------------------------------------------------------------------------------
 def process_spanish_db(fields_correspondences,filename = "data/espanola.xlsx"):

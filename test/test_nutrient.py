@@ -3,7 +3,7 @@
 
 import unittest
 
-from nutrient import *
+from src import nutrient as nt
 
 class nutrientTestCase(unittest.TestCase):
 
@@ -16,12 +16,12 @@ class nutrientTestCase(unittest.TestCase):
 
 
     def test_InControlRange(self):
-        nutrient = Nutrient("potassium",["potasio","pottasche"],"g",7,3.5,5.3,"mineral")
+        nutrient = nt.Nutrient("potassium",["potasio","pottasche"],"g",7,3.5,5.3,"mineral")
         self.assertEqual(nutrient.InControlRange(), False, "Incorrect values")
-        nutrient = Nutrient("potassium",["potasio","pottasche"],"g",5,3.5,5.3,"mineral")
+        nutrient = nt.Nutrient("potassium",["potasio","pottasche"],"g",5,3.5,5.3,"mineral")
         self.assertEqual(nutrient.InControlRange(), True, "Incorrect values")
 
    
 # Testing
-test_nutrient = nutrientTestCase()
-test_nutrient.test_InControlRange()
+#test_nutrient = nutrientTestCase()
+#test_nutrient.test_InControlRange()

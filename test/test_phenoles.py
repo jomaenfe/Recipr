@@ -8,7 +8,7 @@ Created on Thu Mar 14 12:55:36 2019
 
 import unittest
 import pyexcel as pe
-from phenoles import get_polyphenols
+from src import phenoles as phs
 
 
 
@@ -23,7 +23,7 @@ class correspondencesTestCase(unittest.TestCase):
 
     def test_polyphenols(self):
         # Get the resulting database (same values as example of the documentation)
-        self.result = get_polyphenols("test/example-test2.xlsx")
+        self.result = phs.get_polyphenols("test/example-test2.xlsx")
         # self.result.to_excel("prueba.xlsx")
 
         # Now we are going to check that values are correct

@@ -1,15 +1,18 @@
 # -*- coding: utf-8 -*-
 
+from src import nutrient as nt
+from src import food as fd
 
-from food import Food
-from nutrient import *
+
+#from food import *
+#from nutrient import *
 import re
 #from nutrient import Nutrient
 
 # Measure list has to be in ascendent order
 # TODO añadir otros nombres a cada 
-MASS_UNITS = ["micg","mg","cg","dg","g","dag","hg","kg"]    
-CAPACITY_UNITS = ["micl","ml","cl","dl","l","dal","hl","kl"]
+MASS_UNITS = ["ug","mg","cg","dg","g","dag","hg","kg"]    
+CAPACITY_UNITS = ["ul","ml","cl","dl","l","dal","hl","kl"]
 
 MEASURES_LIST = [MASS_UNITS,CAPACITY_UNITS]
 
@@ -17,10 +20,13 @@ MEASURES_LIST = [MASS_UNITS,CAPACITY_UNITS]
 
 
 # Main class, tools to operate with food
-class Foodlib: 
+class Foodlib(): 
 
+    def __init__(self):
+        pass  # do something
+        
     # Grams converter to normalize operations
-    # Añadir otro parametro, la otra unidad a convertir, y asi vale cualquiera
+    # Añadir otro parametro, la otra unidad a convertir, y asi vale cualquiera => Conversor
     def ToGrams(self,value,unit):
         
         if unit and len(unit) < 5 and unit.upper != "G":
@@ -83,10 +89,10 @@ class Foodlib:
 
         result = (0,0)
         # Check if the parameter is a nutrient (Contains the category and the total weight)
-        if isinstance(nutrient,Nutrient):
+        if isinstance(nutrient,nt.Nutrient):
             # Get the parameter category values from the ENERGY_VALUES list.
             # ENERGY_values = [entry[0].upper() for entry in ENERGY_VALUES.items()][nutrient.category.lstrip().rstrip().replace(' ','-').upper()]
-            for energy_value,x in Nutrient.ENERGY_VALUES.items():
+            for energy_value,x in nt.Nutrient.ENERGY_VALUES.items():
                 
                 if (nutrient.category.lstrip().rstrip().replace(' ','-').upper() == energy_value.upper()):                    
                     # Calculate the total energy value based on the total grams of the nutrient
@@ -98,11 +104,3 @@ class Foodlib:
             
 
         return result
-
-
-
-
-
-#foodlib = Foodlib()
-
-#print (foodlib.ToGrams(1000,"mg"))

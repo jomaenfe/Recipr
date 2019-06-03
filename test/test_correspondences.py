@@ -1,14 +1,15 @@
+# -*- coding: utf-8 -*-
 import unittest
 import pyexcel as pe
-import os.path, sys
-sys.path.append(os.path.join(os.path.dirname(os.path.realpath(__file__)), os.pardir))
 
-from correspondences import get_correspondences
-from english_database import process_english_db
-from german_database import process_german_db
-from italian_database import process_italian_db
-# from greek_database import process_greek_db
-from spanish_database import process_spanish_db
+
+from src import correspondences as correp
+from src import english_database as en_db
+from src import italian_database as it_db
+from src import german_database as ger_db
+from src import spanish_database as es_db
+from src import english_database as en_db
+#from src import greek_database as gk_db
 
 
 class correspondencesTestCase(unittest.TestCase):
@@ -17,7 +18,7 @@ class correspondencesTestCase(unittest.TestCase):
 
         # we open the sheets
         # we get the hash table with correspondences
-        self.fields_correspondences = get_correspondences()
+        self.fields_correspondences = correp.get_correspondences()
         pass
 
 
@@ -28,7 +29,7 @@ class correspondencesTestCase(unittest.TestCase):
     def test_english_db(self):
 
 
-        process_english_db(self.fields_correspondences)
+        en_db.process_english_db(self.fields_correspondences)
         english_db_to_test = pe.get_sheet(file_name="data/processed-english-db.xlsx")
         new_row_names = english_db_to_test.row[0]
 
@@ -40,7 +41,7 @@ class correspondencesTestCase(unittest.TestCase):
 
     def test_german_db(self):
 
-        process_german_db(self.fields_correspondences)
+        ger_db.process_german_db(self.fields_correspondences)
         german_db_to_test = pe.get_sheet(file_name="data/processed-german-db.xlsx")
         new_row_names = german_db_to_test.row[2]
 
@@ -66,7 +67,7 @@ class correspondencesTestCase(unittest.TestCase):
 
     def test_italian_db(self):
 
-        process_italian_db(self.fields_correspondences)
+        it_db.process_italian_db(self.fields_correspondences)
         italian_db_to_test = pe.get_sheet(file_name="data/processed-italian-db.xlsx")
         new_row_names = italian_db_to_test.row[1]
 
@@ -78,7 +79,7 @@ class correspondencesTestCase(unittest.TestCase):
 
     def test_spanish_db(self):
 
-        process_spanish_db(self.fields_correspondences)
+        es_db.process_spanish_db(self.fields_correspondences)
         spanish_db_to_test = pe.get_sheet(file_name="data/processed-spanish-db.xlsx")
         new_row_names = spanish_db_to_test.row[0]
 

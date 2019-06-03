@@ -3,3 +3,4 @@ pyexcel-xls
 pyexcel-xlsx
 pandas
 openpyxl
+numpy

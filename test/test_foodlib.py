@@ -2,14 +2,14 @@
 
 
 import unittest
-import sys
 
-from foodlib import Foodlib
-from nutrient import Nutrient
+from src import nutrient as nt
+from src import foodlib as fdlib
+
 
 class FoodlibTestCase(unittest.TestCase):
 
-    foodlib = Foodlib()
+    foodlib = fdlib.Foodlib()
 
     def setUp(self):
         pass
@@ -33,9 +33,9 @@ class FoodlibTestCase(unittest.TestCase):
     def test_GetEnergyValue(self):        
       
         # scientific_param,names_param,unit_param,value_param,range_param1,range_param2,category_param
-        nutrient = Nutrient("potassium",["potasio","pottasche"],"g",5,3.5,5.3,"mineral")
+        nutrient = nt.Nutrient("potassium",["potasio","pottasche"],"g",5,3.5,5.3,"mineral")
         self.assertEqual(self.foodlib.GetEnergyValue(nutrient), (0,0), "Incorrect value")
-        nutrient = Nutrient("inulin",["inulina","inuline"],"g",5,3.5,5.3,"carbohydrate")
+        nutrient = nt.Nutrient("inulin",["inulina","inuline"],"g",5,3.5,5.3,"carbohydrate")
         self.assertEqual(self.foodlib.GetEnergyValue(nutrient), (20,85), "Incorrect value")
 
 

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import pyexcel as pe
 
 fields_correspondences = {}

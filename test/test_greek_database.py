@@ -1,9 +1,8 @@
 import unittest
 import pyexcel as pe
-import os.path, sys
-sys.path.append(os.path.join(os.path.dirname(os.path.realpath(__file__)), os.pardir))
 
-from greek_database import process_greek_db
+
+from src import greek_database as geek
 
 class correspondencesTestCase(unittest.TestCase):
 
@@ -15,7 +14,7 @@ class correspondencesTestCase(unittest.TestCase):
 
     def test_greek_db(self):
 
-        process_greek_db()
+        geek.process_greek_db()
         greek_db_to_test = pe.get_sheet(file_name = "data/Greece/processed-db-greece.xlsx")
         new_row_names = greek_db_to_test.row[1]
 
