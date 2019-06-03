@@ -16,5 +16,4 @@ setup(
     description=u'Testing using unittest for common',
     packages=find_packages(include=['test_*.py']),
     python_requires='>=3',
-    install_requires=[],
 )
