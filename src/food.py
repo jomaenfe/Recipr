@@ -8,7 +8,7 @@ from src import foodlib as fdlib
 class Food():
     # Las variables de clase son para atributos y métodos compartidos por todas las instancias de la clase  
     #f = foodlib.Foodlib()
-    foodlib = fdlib.Foodlib()
+    foodlib_obj = fdlib.Foodlib()
 
     def __init__(self,names_param,alias_param,nutrients_param,description_param,action_param,unit_param,value_param,proteins_param,carbo_param,fat_param,pc_param):
         # Variables de instancia: para datos únicos de cada instancia
