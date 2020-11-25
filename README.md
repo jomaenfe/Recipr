@@ -1,4 +1,4 @@
-[![Build Status](https://www.travis-ci.org/jomaenfe/Recipr.svg?branch=master)](https://www.travis-ci.org/jomaenfe/Recipr)
+[![Build Status](https://travis-ci.com/jomaenfe/Recipr.svg?branch=master)](https://travis-ci.com/jomaenfe/Recipr)
 [![Coverage Status](https://coveralls.io/repos/github/jomaenfe/Recipr/badge.svg?branch=master)](https://coveralls.io/github/jomaenfe/Recipr?branch=master)
 
 # Requirements development
