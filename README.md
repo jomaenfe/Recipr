@@ -1,5 +1,5 @@
-[![Build Status](https://www.travis-ci.org/Stance4Health-Dev/Recipr.svg?branch=master)](https://www.travis-ci.org/Stance4Health-Dev/Recipr)
-[![Coverage Status](https://coveralls.io/repos/github/Stance4Health-Dev/common/badge.svg)](https://coveralls.io/github/Stance4Health-Dev/common)
+[![Build Status](https://www.travis-ci.org/jomaenfe/Recipr.svg?branch=master)](https://www.travis-ci.org/jomaenfe/Recipr)
+[![Coverage Status](https://coveralls.io/repos/github/jomaenfe/Recipr/badge.svg?branch=master)](https://coveralls.io/github/jomaenfe/Recipr?branch=master)
 
 # Requirements development
 

@@ -127,25 +127,29 @@ def get_polyphenols(filename):
 #    df_polifenoles_totales['polyphenols, total'] = df_polifenoles_totales['polyphenols, total'].apply(pd.to_numeric, errors = 'coerce')
 
     # Concatenamos el valor de polifenoles totales
-    result = pd.concat([polifenoles, polyphenol_total_values], axis=1, join_axes=[polifenoles.index])
+    #result = pd.concat([polifenoles, polyphenol_total_values], axis=1, join_axes=[polifenoles.index])
+    result = pd.concat([polifenoles, polyphenol_total_values], axis=1).reindex(polifenoles.index)
     result.rename(index=str,columns={"mean":"Polifenoles Totales Programa"},inplace=True)
 
     # Concatenamos el valor de polifenoles B
-    result = pd.concat([result, agrupacion], axis=1, join_axes=[result.index])
+    #result = pd.concat([result, agrupacion], axis=1, join_axes=[result.index])
+    result = pd.concat([result, agrupacion], axis=1).reindex(result.index)
     # Tiene de nombre mean -> lo cambiamos
     result.rename(index=str,columns={"mean":"Polifenoles B (calculados)"},inplace=True)
 
 
     # concatenamos lo anterior con los resultados de los grupos de polifenoles para cada comida
-    result = pd.concat([result, res_compound_group], axis=1, join_axes=[result.index])
+    #result = pd.concat([result, res_compound_group], axis=1, join_axes=[result.index])
+    result = pd.concat([result, res_compound_group], axis=1).reindex(result.index)
 
     # concatenamos lo anterior con los resultados de los subgrupos de polifenoles para cada comida
-    result = pd.concat([result, res_compound_subgroup], axis=1, join_axes=[result.index])
+    #result = pd.concat([result, res_compound_subgroup], axis=1, join_axes=[result.index])
+    result = pd.concat([result, res_compound_subgroup], axis=1).reindex(result.index)
     #nota: recordar qe hay alimentos que solo tienen polifenoles totales definidos
 
     # concatenamos lo anterior con los resultados de los grupos de polifenoles para cada comida
-    result = pd.concat([result, res_compound_individual], axis=1, join_axes=[result.index])
-
+    #result = pd.concat([result, res_compound_individual], axis=1, join_axes=[result.index])
+    result = pd.concat([result, res_compound_individual], axis=1).reindex(result.index)
 
 
     return result
